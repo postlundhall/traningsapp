@@ -22,10 +22,16 @@ import lombok.NoArgsConstructor;
 public class Instruktion {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotBlank
+    @Size(min = 2, max = 100)
     private String ovningsnamn;
+
+    @Min(1)
+    @Max(100)
     private int antalSet;
-    private String repRange;
-    private int langdMins;
 
-
+    private int passid = 1; // PLACEHOLDER. KNYT AN TILL DET PASS SOM INSTRUKTIONEN ÄR FÖR.
 }

@@ -26,17 +26,17 @@ public class Traningspass {
     private Long id;
 
     @NotBlank(message = "Ange passnamn")
-    @Size(max = 255, message = "Syfte får vara max 255 tecken")
+    @Size(max = 50, message = "Passets namn får vara max 50 tecken")
     private String passnamn;
 
     @NotBlank(message = "Ange syftet med träningspasset")
-    @Size(max = 255, message = "Syfte får max vara 255 tecken")
+    @Size(max = 50, message = "Syfte får max vara 50 tecken")
     private String syfte;
 
     @NotBlank(message = "Ange nivå för passet (t.ex. Nybörjare, Medel, Avancerad)")
     private String niva;
 
-    @Min(value = 1, message = "Längden måste vara minst 1 minut")
+    @Min(value = 1, message = "Längden får vara minst 1 minut")
     @Max(value = 300, message = "Längden får max vara 300 minuter")
     private int langdMins;
 

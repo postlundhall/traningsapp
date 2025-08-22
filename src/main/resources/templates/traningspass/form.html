@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulär - Träningspass</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1 th:text="${traningspass.id != null} ? 'Redigera träningspass' : 'Skapa nytt träningspass'"></h1>
+<form th:action="@{/traningspass/save}" th:object="${traningspass}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Passnamn:</label>
+    <input type="text" th:field="*{passnamn}"/><br/>
+
+    <label>Syfte:</label>
+    <input type="text" th:field="*{syfte}"/><br/>
+
+    <label>Längd (min):</label>
+    <input type="number" th:field="*{langdMins}"/><br/>
+
+    <label>Nivå:</label>
+    <input type="text" th:field="*{niva}"/><br/>
+
+    <button type="submit">Spara</button>
+</form>
+<a th:href="@{/traningspass}">Tillbaka</a>
+</body>
+</html>

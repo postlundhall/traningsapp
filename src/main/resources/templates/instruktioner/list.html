@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Instruktioner</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>Lista över instruktioner</h1>
+<a th:href="@{/}">Tillbaka till start</a> |
+<a th:href="@{/instruktioner/new}">Lägg till ny instruktion</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Titel</th>
+        <th>Beskrivning</th>
+        <th>Åtgärder</th>
+    </tr>
+    <tr th:each="instr : ${instruktionList}">
+        <td th:text="${instr.id}"></td>
+        <td th:text="${instr.titel}"></td>
+        <td th:text="${instr.beskrivning}"></td>
+        <td>
+            <a th:href="@{/instruktioner/edit/{id}(id=${instr.id})}">Redigera</a> |
+            <a th:href="@{/instruktioner/delete/{id}(id=${instr.id})}">Ta bort</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

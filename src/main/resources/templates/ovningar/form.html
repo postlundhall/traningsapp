@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Övning</title></head>
+<body>
+<h1 th:text="${ovning.id != null} ? 'Redigera övning' : 'Ny övning'"></h1>
+
+<form th:action="${ovning.id != null} ? @{'/ovningar/' + ${ovning.id}} : @{/ovningar}" method="post">
+    <label>Namn: <input type="text" th:field="*{namn}" /></label><br/>
+    <label>Reps: <input type="number" th:field="*{antalReps}" /></label><br/>
+    <label>Set: <input type="number" th:field="*{antalSet}" /></label><br/>
+    <button type="submit">Spara</button>
+</form>
+
+<a th:href="@{/ovningar}">Tillbaka</a>
+
+</body>
+</html>

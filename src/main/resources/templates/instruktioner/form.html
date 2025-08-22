@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Formulär - Instruktion</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1 th:text="${instruktion.id != null} ? 'Redigera instruktion' : 'Skapa ny instruktion'"></h1>
+<form th:action="@{/instruktioner/save}" th:object="${instruktion}" method="post">
+    <input type="hidden" th:field="*{id}"/>
+
+    <label>Titel:</label>
+    <input type="text" th:field="*{titel}"/><br/>
+
+    <label>Beskrivning:</label>
+    <textarea th:field="*{beskrivning}"></textarea><br/>
+
+    <button type="submit">Spara</button>
+</form>
+<a th:href="@{/instruktioner}">Tillbaka</a>
+</body>
+</html>

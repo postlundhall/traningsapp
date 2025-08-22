@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Träningspass</title>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<h1>Lista över träningspass</h1>
+<a th:href="@{/static}">Tillbaka till start</a> |
+<a th:href="@{/traningspass/new}">Lägg till nytt pass</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Passnamn</th>
+        <th>Syfte</th>
+        <th>Längd (min)</th>
+        <th>Nivå</th>
+        <th>Åtgärder</th>
+    </tr>
+    <tr th:each="pass : ${traningspassList}">
+        <td th:text="${pass.id}"></td>
+        <td th:text="${pass.passnamn}"></td>
+        <td th:text="${pass.syfte}"></td>
+        <td th:text="${pass.langdMins}"></td>
+        <td th:text="${pass.niva}"></td>
+        <td>
+            <a th:href="@{/traningspass/edit/{id}(id=${pass.id})}">Redigera</a> |
+            <a th:href="@{/traningspass/delete/{id}(id=${pass.id})}">Ta bort</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
