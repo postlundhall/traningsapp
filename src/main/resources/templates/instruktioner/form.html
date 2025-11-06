@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout(~{::main})}">
+<head>
+    <title>Lägg till/Redigera Övning</title>
+</head>
+<body>
+<main>
+    <h1>Lägg till eller redigera övning</h1>
+    <form th:action="@{/ovningar}" th:object="${ovning}" method="post">
+        <div>
+            <label for="ovningsnamn">Övningsnamn:</label>
+            <input type="text" th:field="*{ovningsnamn}" id="ovningsnamn" />
+            <span th:errors="*{ovningsnamn}" class="error"></span>
+        </div>
+        <div>
+            <label for="utrustning">Utrustning:</label>
+            <select th:field="*{utrustning}" id="utrustning">
+                <option th:each="utrustning : ${T(com.postlundhall.TraningsregisterSpringH2.model.Ovning$Utrustning).values()}"
+                        th:value="${utrustning}"
+                        th:text="${#strings.capitalizeWords(utrustning.name().replace('_', ' ').toLowerCase())}"></option>
+            </select>
+        </div>
+        <div>
+            <label for="primarMuskel">Primär muskel:</label>
+            <select th:field="*{primarMuskel}" id="primarMuskel">
+                <option th:each="muskel : ${T(com.postlundhall.TraningsregisterSpringH2.model.Ovning$PrimarMuskel).values()}"
+                        th:value="${muskel}"
+                        th:text="${#strings.capitalizeWords(muskel.name().replace('_', ' ').toLowerCase())}"></option>
+            </select>
+        </div>
+        <button type="submit">Spara</button>
+    </form>
+    <a th:href="@{/ovningar/list}">Tillbaka till listan</a>
+</main>
+</body>
+</html>

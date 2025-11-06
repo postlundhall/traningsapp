@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <title>Lokal start – Träningsregister</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="brand.css">
+    <style>
+        .list-group-item { text-align: left !important; padding: 0.9rem 0 !important; }
+        .list-group-item pre { margin: 0.6rem 0; padding: 0.7rem; font-size: 0.95rem; }
+        .list-group-item code { white-space: pre; }
+        .box { padding: 0.7rem; }
+        .badge-custom { background-color: rgba(255,255,255,0.2); padding: 0.4rem 0.8rem; }
+    </style>
+</head>
+<body class="hero text-white"
+      style="background:linear-gradient(135deg,#007B40,#009951);min-height:100vh">
+
+<div class="container py-4">
+    <div class="text-center mb-4">
+        <i class="fas fa-rocket fa-4x mb-3"></i>
+        <h1 class="display-6 fw-bold">Lokal snabbstart av webbapplikation</h1>
+        <p class="mt-2"><span class="badge-custom rounded">Krav: Java 21 eller nyare</span></p>
+        <p class="opacity-75"><small>(Maven krävs ej)</small></p>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-xl-9 col-lg-10">
+
+            <ol class="list-group list-group-numbered">
+                <li class="list-group-item bg-transparent border-0 text-white">
+                    Öppna <strong>Terminal</strong> (Mac/Linux) eller <strong>PowerShell</strong> (Windows)
+                    och klona repot:
+                    <pre class="bg-dark text-white rounded mt-2"><code>git clone https://github.com/postlundhall/traningsapp.git
+cd traningsapp</code></pre>
+                </li>
+
+                <li class="list-group-item bg-transparent border-0 text-white">
+                    <strong>Välj startmetod:</strong>
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <div class="bg-white text-dark rounded shadow-sm box">
+                                <strong>Alternativ 1: Direkt körning</strong>
+                                <pre class="bg-light rounded mt-2 mb-0"><code>./mvnw spring-boot:run</code></pre>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="bg-white text-dark rounded shadow-sm box">
+                                <strong>Alternativ 2: Bygg JAR och kör</strong>
+                                <pre class="bg-light rounded mt-2 mb-0"><code>./mvnw clean package
+java -jar target/traningsapp.jar</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="alert alert-light mt-3 mb-0" role="alert">
+                        <strong>⚠️ Om <code>./mvnw</code> inte körs:</strong> Kör först
+                        <code>chmod +x mvnw</code>
+                    </div>
+                </li>
+
+                <li class="list-group-item bg-transparent border-0 text-white">
+                    <strong>Åtkomst:</strong>
+                    <div class="mt-2">
+                        <p class="mb-2">
+                            🌐 Webbappen:<br>
+                            <a href="http://localhost:8080" class="text-white text-decoration-underline fs-5">
+                                http://localhost:8080
+                            </a>
+                        </p>
+                        <p class="mb-2">
+                            🗄️ Databaskonsol (medan app körs):<br>
+                            <a href="http://localhost:8080/h2-console/" class="text-white text-decoration-underline fs-5">
+                                http://localhost:8080/h2-console/
+                            </a><br>
+                            <small class="opacity-75">Användarnamn: <code>sa</code> · Inget lösenord</small>
+                        </p>
+                        <p class="mt-3 mb-0">
+                            <small class="opacity-75">💾 Data sparas i <code>./data/</code></small>
+                        </p>
+                    </div>
+                </li>
+            </ol>
+
+        </div>
+    </div>
+</div>
+</body>
+</html>

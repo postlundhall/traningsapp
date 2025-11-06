@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg bg-primary mb-4" data-bs-theme="dark" th:fragment="navbar" aria-label="Huvudnavigering">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
+            <i class="fas fa-dumbbell me-2" aria-hidden="true"></i>
+            <span th:text="#{app.title}">TräningsApp</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                th:attr="aria-label=#{navbar.toggle}" aria-expanded="false">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/ovningar}"
+                       th:attr="aria-label=|#{navbar.ovningar} ${#messages.msgOrNull('ovning.list.title')}|">
+                        <i class="fas fa-running me-1" aria-hidden="true"></i>
+                        <span th:text="#{navbar.ovningar}">Övningar</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/traningspass}"
+                       th:attr="aria-label=|#{navbar.traningspass} ${#messages.msgOrNull('traningspass.list.title')}|">
+                        <i class="fas fa-calendar-check me-1" aria-hidden="true"></i>
+                        <span th:text="#{navbar.traningspass}">Träningspass</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/instruktioner}"
+                       th:attr="aria-label=|#{navbar.instruktioner} ${#messages.msgOrNull('instruktioner.list.title')}|">
+                        <i class="fas fa-book me-1" aria-hidden="true"></i>
+                        <span th:text="#{navbar.instruktioner}">Instruktioner</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item" th:if="${#authentication == null or #authentication.principal == 'anonymousUser'}">
+                    <a class="nav-link" th:href="@{/register}" th:text="#{navbar.register}" th:attr="aria-label=#{navbar.register}">Registrera</a>
+                </li>
+                <li class="nav-item" th:if="${#authentication != null and #authentication.principal != 'anonymousUser'}">
+                    <form th:action="@{/logout}" method="post" class="d-inline">
+                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                        <button type="submit" class="nav-link btn btn-link text-white" th:text="#{navbar.logout}" th:attr="aria-label=#{navbar.logout}">Logga ut</button>
+                    </form>
+                </li>
+            </ul>
+            <form class="d-flex align-items-center ms-3" th:action="@{/search}" method="get" role="search" aria-label="Sök i TräningsApp">
+                <input class="form-control me-2" type="search" th:placeholder="#{navbar.search.placeholder}" th:attr="aria-label=#{navbar.search.placeholder}" name="query" style="min-width: 150px;">
+                <button class="btn btn-outline-success" type="submit" th:attr="aria-label=#{navbar.search.submit}">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+            <div class="dropdown ms-3">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="languageDropdown" data-bs-toggle="dropdown" aria-expanded="false" th:text="#{navbar.language}" th:attr="aria-label=#{navbar.language}">Language</button>
+                <ul class="dropdown-menu" aria-labelledby="languageDropdown">
+                    <li><a class="dropdown-item" th:href="@{./(lang='sv_SE')}" th:text="#{navbar.language.swedish}">Svenska</a></li>
+                    <li><a class="dropdown-item" th:href="@{./(lang='en_US')}" th:text="#{navbar.language.english}">English</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>

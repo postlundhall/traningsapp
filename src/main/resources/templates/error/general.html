@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <section class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="#{error.general.title}">Fel</h1>
+
+        <div class="alert alert-danger" role="alert" aria-live="polite" aria-labelledby="error-heading">
+            <h2 id="error-heading" class="alert-heading h4" th:text="#{error.general.heading}">Ett problem uppstod</h2>
+            <p class="mb-0" th:text="#{${errorMessage}}">Ett oväntat fel uppstod.</p>
+            <p th:text="#{error.suggestion}">Försök igen eller kontakta support om problemet kvarstår.</p>
+        </div>
+
+        <nav th:attr="aria-label=#{error.actions}" class="mt-4">
+            <div class="d-flex flex-wrap gap-2">
+                <a th:href="@{/}"
+                   class="btn btn-primary"
+                   th:attr="aria-label=#{general.home},data-bs-toggle='tooltip',data-bs-title=#{general.home}">
+                    <i class="fas fa-home me-2" aria-hidden="true"></i>
+                    <span th:text="#{general.home}">Startsida</span>
+                </a>
+            </div>
+        </nav>
+    </section>
+</main>
+</html>

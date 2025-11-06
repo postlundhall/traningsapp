@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sv"
+      th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <div class="container">
+        <!-- Hero section -->
+        <section class="hero text-center mb-5 py-5 bg-light rounded-3" aria-labelledby="welcome-title">
+            <h1 id="welcome-title" class="display-4 fw-bold" th:text="#{home.title}">Välkommen till träningspassregistret</h1>
+            <p class="lead" th:text="#{home.subtitle}" aria-describedby="welcome-title">Skräddarsydda träningspass för styrka, hälsa och funktion.</p>
+        </section>
+        <!-- Alerts section -->
+        <section th:if="${errorMessage != null or successMessage != null}" aria-labelledby="alerts-title">
+            <h2 id="alerts-title" class="visually-hidden" th:text="#{general.alerts}">Meddelanden</h2>
+            <div th:if="${errorMessage != null}" class="alert alert-danger alert-dismissible fade show" role="alert">
+                <span th:text="#{${errorMessage}}">Felmeddelande</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" th:attr="aria-label=#{general.close}"></button>
+            </div>
+            <div th:if="${successMessage != null}" class="alert alert-success alert-dismissible fade show" role="alert">
+                <span th:text="#{${successMessage}}">Lyckades</span>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" th:attr="aria-label=#{general.close}"></button>
+            </div>
+        </section>
+        <!-- Feature cards -->
+        <section class="row g-4" aria-labelledby="features-title">
+            <h2 id="features-title" class="visually-hidden" th:text="#{home.features}">Funktioner</h2>
+            <article class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-running fa-3x mb-3 text-primary" aria-hidden="true"></i>
+                        <h3 class="h5 card-title fw-bold" th:text="#{home.ovningar.title}">Övningar</h3>
+                        <p class="card-text" th:text="#{home.ovningar.description}">Utforska och hantera dina övningar.</p>
+                        <a class="btn btn-primary" th:href="@{/ovningar}"
+                           th:attr="aria-label=|#{home.ovningar.link} ${#messages.msgOrNull('ovning.list.title')}|,data-bs-toggle='tooltip',data-bs-title=|#{home.ovningar.link} ${#messages.msgOrNull('ovning.list.title')}|"
+                           th:text="#{home.ovningar.link}">Gå till övningslistan</a>
+                    </div>
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-calendar-check fa-3x mb-3 text-primary" aria-hidden="true"></i>
+                        <h3 class="h5 card-title fw-bold" th:text="#{home.traningspass.title}">Träningspass</h3>
+                        <p class="card-text" th:text="#{home.traningspass.description}">Bygg dina egna träningspass.</p>
+                        <a class="btn btn-primary" th:href="@{/traningspass}"
+                           th:attr="aria-label=|#{home.traningspass.link} ${#messages.msgOrNull('traningspass.list.title')}|,data-bs-toggle='tooltip',data-bs-title=|#{home.traningspass.link} ${#messages.msgOrNull('traningspass.list.title')}|"
+                           th:text="#{home.traningspass.link}">Gå till träningspasslistan</a>
+                    </div>
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="fas fa-book fa-3x mb-3 text-primary" aria-hidden="true"></i>
+                        <h3 class="h5 card-title fw-bold" th:text="#{home.instruktioner.title}">Instruktioner</h3>
+                        <p class="card-text" th:text="#{home.instruktioner.description}">Lägg till och redigera träningsinstruktioner.</p>
+                        <a class="btn btn-primary" th:href="@{/instruktioner}"
+                           th:attr="aria-label=|#{home.instruktioner.link} ${#messages.msgOrNull('instruktioner.list.title')}|,data-bs-toggle='tooltip',data-bs-title=|#{home.instruktioner.link} ${#messages.msgOrNull('instruktioner.list.title')}|"
+                           th:text="#{home.instruktioner.link}">Gå till instruktionslistan</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </div>
+</main>
+</html>

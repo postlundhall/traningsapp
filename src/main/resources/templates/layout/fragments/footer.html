@@ -1,0 +1,20 @@
+<footer th:fragment="footer" class="bg-light text-center py-3 mt-4 border-top" aria-labelledby="footer-title">
+    <h2 id="footer-title" class="visually-hidden" th:text="#{footer.title}">Sidfot</h2>
+    <p class="mb-2">
+        <small>
+            <span th:text="#{footer.copyright(${#temporals.format(#temporals.createNow(), 'yyyy')})}">©2025 TräningsApp</span>
+            <span class="mx-2">|</span>
+            <a th:href="@{/privacy}" th:text="#{footer.privacy}" class="text-muted me-2">Integritetspolicy</a>
+            <span class="mx-2">|</span>
+            <a th:href="@{/terms}" th:text="#{footer.terms}" class="text-muted">Användarvillkor</a>
+        </small>
+    </p>
+    <nav class="mt-2" aria-label="Sociala medier">
+        <a href="#" class="me-3 text-muted" th:attr="aria-label=#{footer.social.facebook}">
+            <i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+        <a href="#" class="me-3 text-muted" th:attr="aria-label=#{footer.social.twitter}">
+            <i class="fab fa-twitter" aria-hidden="true"></i></a>
+        <a href="#" class="text-muted" th:attr="aria-label=#{footer.social.instagram}">
+            <i class="fab fa-instagram" aria-hidden="true"></i></a>
+    </nav>
+</footer>

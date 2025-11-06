@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <div class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="${traningspass.id} ? 'Redigera träningspass' : 'Nytt träningspass'"></h1>
+        <div th:if="${errorMessage}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span th:text="${errorMessage}"></span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Stäng"></button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form th:action="${traningspass.id} ? @{|/traningspass/${traningspass.id}|} : @{/traningspass}" th:object="${traningspass}" method="post" novalidate>
+                    <input th:if="${traningspass.id}" type="hidden" name="_method" value="PUT"/>
+                    <input type="hidden" th:field="*{id}"/>
+                    <div class="mb-3">
+                        <label for="passnamn" class="form-label">Passnamn</label>
+                        <input type="text" class="form-control" id="passnamn" th:field="*{passnamn}" required maxlength="50" aria-required="true"/>
+                        <div th:if="${#fields.hasErrors('passnamn')}" class="text-danger" th:errors="*{passnamn}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="syfte" class="form-label">Syfte</label>
+                        <select class="form-select" id="syfte" th:field="*{syfte}" required aria-required="true">
+                            <option value="">Välj syfte</option>
+                            <option th:each="syfte : ${T(com.postlundhall.TraningsregisterSpringH2.model.Traningspass$Syfte).values()}"
+                                    th:value="${syfte}" th:text="#{traningspass.syfte.${syfte}}"></option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('syfte')}" class="text-danger" th:errors="*{syfte}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="niva" class="form-label">Nivå</label>
+                        <select class="form-select" id="niva" th:field="*{niva}" required aria-required="true">
+                            <option value="">Välj nivå</option>
+                            <option th:each="niva : ${T(com.postlundhall.TraningsregisterSpringH2.model.Traningspass$Niva).values()}"
+                                    th:value="${niva}" th:text="#{traningspass.niva.${niva}}"></option>
+                        </select>
+                        <div th:if="${#fields.hasErrors('niva')}" class="text-danger" th:errors="*{niva}"></div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="langdMins" class="form-label">Längd (minuter)</label>
+                        <input type="number" class="form-control" id="langdMins" th:field="*{langdMins}" required min="1" max="300" aria-required="true"/>
+                        <div th:if="${#fields.hasErrors('langdMins')}" class="text-danger" th:errors="*{langdMins}"></div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a th:href="@{/traningspass}" class="btn btn-secondary me-2" aria-label="Avbryt">Avbryt</a>
+                        <button type="submit" class="btn btn-primary" aria-label="Spara träningspass">Spara</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

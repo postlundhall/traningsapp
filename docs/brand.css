@@ -1,0 +1,136 @@
+/* ============================================================= */
+/*  brand.css                          */
+/*  Används av:                                                  */
+/*   • docs/index.html                                           */
+/*   • docs/javadoc/ (via ../brand.css)                          */
+/*   • docs/coverage/ (via ../brand.css)                         */
+/* ============================================================= */
+
+:root {
+    --primary:        #007B40;   /* Mörkgrön – huvudfärg */
+    --primary-hover:  #006633;   /* Mörkare vid hover   */
+    --accent:         #ff8c00;   /* Orange – detaljer   */
+    --text:           #1a1a1a;   /* Mörkgrå text        */
+    --bg:             #f8f9fa;   /* Ljus bakgrund       */
+    --white:          #ffffff;   /* Vit – hero & header */
+}
+
+/*  1. GLOBALA REGLER                                           */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.7;
+    color: var(--text);
+    background: var(--bg);
+    margin: 0;
+}
+
+h1, h2, h3 { font-weight: 600; }
+
+h2 {
+    color: var(--primary);
+    border-bottom: 3px solid var(--accent);
+    padding-bottom: .4rem;
+    margin-top: 2.5rem;
+}
+
+/* Länkar */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: color .2s;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,123,64,.25) !important;
+}
+.card i {
+    color: var(--primary);
+    pointer-events: none;
+}
+
+/* Bootstrap-finslip */
+.text-muted   { color: #666 !important; }
+.table        { font-size: .95rem; }
+.list-unstyled { padding-left: 0; }
+.list-unstyled li { margin: .8rem 0; }
+
+/*  2. PAGES – HERO (index.html)                                */
+.hero {
+    background: var(--primary);
+    color: var(--white);
+    padding: 4rem 0;
+    text-align: center;
+}
+.hero h1,
+.hero p,
+.hero a {
+    color: var(--white) !important;
+}
+.hero .fa-dumbbell {
+    color: var(--white);
+    margin-right: .5rem;
+}
+.hero .lead {
+    font-size: 1.25rem;
+    opacity: .95;
+}
+
+.hover-opacity-100 { opacity: .75; }
+.hover-opacity-100:hover { opacity: 1 !important; }
+
+.card {
+    transition: transform .25s, box-shadow .25s;
+    border: none;
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(0,123,64,.25) !important;
+}
+
+/*  3. JAVADOC – HEADER                                         */
+.javadoc-header {
+    background: var(--primary);
+    color: var(--white);
+    padding: 1.5rem 2rem;
+    margin: -8px -8px 2rem -8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+.javadoc-header h1 {
+    margin: 0;
+    font-size: 2rem;
+    display: inline-block;
+    color: var(--white);
+}
+.javadoc-header i {
+    color: var(--accent);
+    margin-right: .7rem;
+    font-size: 1.8rem;
+    vertical-align: -0.15em;
+}
+.javadoc-header .version {
+    float: right;
+    font-size: 1.1rem;
+    margin-top: .4rem;
+    opacity: .9;
+}
+
+/*  4. FOOTER                                          */
+footer small {
+    opacity: .8;
+    font-size: .9rem;
+}
+
+/*  5. Bootstrap .visually-hidden                  */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}

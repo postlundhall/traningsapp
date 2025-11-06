@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sv" th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <section class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="#{footer.terms}">Terms of Use</h1>
+        <div class="card">
+            <div class="card-body">
+                <p th:text="#{terms.content}">Coming soon...</p>
+            </div>
+        </div>
+        <a th:href="@{/}" class="btn btn-primary mt-3" th:text="#{error.back}">Back to Home</a>
+    </section>
+</main>
+</html>

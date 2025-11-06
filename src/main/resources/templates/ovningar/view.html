@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <section class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="#{ovning.view.title}">Visa övning</h1>
+
+        <div th:if="${errorMessage}" class="alert alert-danger" role="alert" aria-live="polite">
+            <span th:text="#{${errorMessage}}">Felmeddelande</span>
+        </div>
+
+        <article class="card">
+            <header class="card-header">
+                <h2 class="card-title mb-0" id="exerciseTitle" th:text="${ovning.ovningsnamn}"></h2>
+            </header>
+            <div class="card-body">
+                <dl class="row" aria-labelledby="exerciseTitle">
+                    <dt class="col-sm-3" th:text="#{ovning.form.name}">Namn</dt>
+                    <dd class="col-sm-9" th:text="${ovning.ovningsnamn}"></dd>
+                    <dt class="col-sm-3" th:text="#{ovning.form.equipment}">Utrustning</dt>
+                    <dd class="col-sm-9" th:text="${#messages.msgOrNull('ovning.utrustning.' + ovning.utrustning)}"></dd>
+                    <dt class="col-sm-3" th:text="#{ovning.form.muscle}">Primär muskel</dt>
+                    <dd class="col-sm-9" th:text="${#messages.msgOrNull('ovning.primarMuskel.' + ovning.primarMuskel)}"></dd>
+                </dl>
+
+                <nav aria-label="Övningsåtgärder" class="d-flex justify-content-end gap-2">
+                    <a th:href="@{/ovningar}"
+                       class="btn btn-secondary btn-sm"
+                       th:attr="aria-label=#{ovning.view.back},data-bs-toggle='tooltip',data-bs-title=#{ovning.view.back}"
+                       th:text="#{ovning.view.back}">Tillbaka</a>
+                    <div class="btn-group" role="group" th:attr="aria-label=#{ovning.view.actions}">
+                        <a th:href="@{/ovningar/{id}/edit(id=${ovning.id})}"
+                           class="btn btn-warning btn-sm"
+                           th:attr="aria-label=#{ovning.view.edit},data-bs-toggle='tooltip',data-bs-title=#{ovning.view.edit}">
+                            <i class="fas fa-pencil me-1" aria-hidden="true"></i>
+                            <span th:text="#{ovning.view.edit}">Redigera</span>
+                        </a>
+                        <form th:action="@{/ovningar/{id}/delete(id=${ovning.id})}" method="post" class="d-inline">
+                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm"
+                                    th:attr="aria-label=#{ovning.view.delete},
+                                     data-bs-toggle='tooltip',
+                                     data-bs-title=#{ovning.view.delete},
+                                     data-name=${ovning.ovningsnamn}"
+                                    onclick="return confirmDelete(this)">
+                                <i class="fas fa-trash-can me-1" aria-hidden="true"></i>
+                                <span th:text="#{ovning.view.delete}">Ta bort</span>
+                            </button>
+                        </form>
+                    </div>
+                </nav>
+            </div>
+        </article>
+    </section>
+</main>
+</html>

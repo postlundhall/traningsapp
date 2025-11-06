@@ -1,0 +1,319 @@
+:root {
+    --primary-color: #007B40; /* Vibrant green for fitness theme */
+    --primary-hover: #006633; /* Darker green for hover */
+    --accent-color: #ff8c00; /* Secondary orange accent for variety */
+    --secondary-color: #e9ecef; /* Lighter gray for background */
+    --text-color: #1a1a1a; /* Darker text for readability */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+}
+
+/* Base styles */
+body {
+    background-color: var(--secondary-color);
+    font-family: 'Segoe UI', 'Roboto', Tahoma, Geneva, Verdana, sans-serif; /* Modern look */
+    color: var(--text-color);
+    font-size: 1rem;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Navbar */
+.navbar.bg-primary {
+    background-color: var(--primary-color) !important;
+}
+
+.navbar[data-bs-theme="dark"] {
+    --bs-navbar-hover-color: rgba(255, 255, 255, 0.9); /* Brighter white for visibility */
+    --bs-navbar-active-color: #ffffff; /* Full white for active links */
+}
+
+.navbar-nav .nav-link {
+    color: #ffffff; /* Base white text */
+    font-weight: 500;
+    transition: color 0.2s ease, background-color 0.2s ease; /* Smooth transition */
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+    color: var(--bs-navbar-hover-color); /* Hover tint */
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle overlay */
+    border-radius: var(--border-radius);
+}
+
+.navbar-nav .nav-link:hover i {
+    color: inherit; /* Sync icon color */
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .navbar-nav .nav-link {
+        transition: none;
+    }
+}
+
+.dropdown-menu {
+    background-color: #ffffff;
+    color: #1a1a1a;
+}
+
+/* Font Awesome icons */
+.fas, .fab {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+
+.navbar-brand .fas {
+    font-size: 1.5rem; /* Larger dumbbell icon */
+}
+
+.card-body .fas {
+    font-size: 3.0rem; /* Icons in index.html */
+}
+
+.card-body .btn-sm .fas {
+    font-size: 1.2rem; /* Button icons */
+}
+
+/* Hero section */
+.hero {
+    background-color: var(--secondary-color);
+    padding: 3rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--accent-color);
+}
+
+/* Cards */
+.card {
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: none;
+    box-shadow: var(--shadow-sm);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+    color: #ffffff;
+}
+
+.btn-info:hover,
+.btn-info:focus {
+    background-color: #0f859a;
+    border-color: #0f859a;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+    color: #ffffff;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+    background-color: #c78d00;
+    border-color: #c78d00;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+    background-color: #a32432;
+    border-color: #a32432;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+}
+
+.btn-outline-success {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.btn-outline-success:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle hover effect */
+    border-color: #ffffff;
+}
+
+/* Icon contrast */
+.btn-info i,
+.btn-warning i,
+.btn-danger i {
+    color: #ffffff;
+}
+
+/* Button group */
+.btn-group .btn {
+    margin-right: 0.25rem;
+}
+
+.btn-group .btn:last-child {
+    margin-right: 0;
+}
+
+/* Footer social media icons */
+footer .fab {
+    font-size: 1.25rem;
+    transition: color 0.2s;
+}
+
+footer a:hover .fab {
+    color: var(--primary-color);
+}
+
+/* Search form */
+.navbar form[role="search"] input {
+    border-radius: var(--border-radius);
+    transition: border-color 0.2s ease; /* Smooth border transition */
+}
+
+.navbar form[role="search"] input:focus {
+    border-color: #ffffff; /* White border on focus for contrast */
+}
+
+.navbar form[role="search"] button {
+    padding: 0.375rem 0.75rem;
+}
+
+/* Focus states for accessibility */
+a:focus,
+button:focus,
+input:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Table styles */
+.table-responsive {
+    overflow-x: auto;
+}
+
+#exerciseTable {
+    width: 100%;
+    max-width: 100%;
+    table-layout: fixed; /* Fix table layout to enforce column widths */
+    border-collapse: collapse;
+}
+
+#exerciseTable th,
+#exerciseTable td {
+    padding: 0.75rem;
+    vertical-align: middle;
+}
+
+/* Column widths */
+#exerciseTable th:nth-child(1),
+#exerciseTable td:nth-child(1) {
+    width: auto;
+    max-width: 50%; /* Cap Övningsnamn at 50% of table width */
+    white-space: normal; /* Allow text to wrap onto new lines */
+    word-wrap: break-word; /* Ensure long words break appropriately */
+    hyphens: auto;
+}
+
+#exerciseTable th:nth-child(2),
+#exerciseTable td:nth-child(2) {
+    width: 20%; /* Utrustning column */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#exerciseTable th:nth-child(3),
+#exerciseTable td:nth-child(3) {
+    width: 20%; /* Primär muskel column */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#exerciseTable th:nth-child(4),
+#exerciseTable td:nth-child(4) {
+    width: 10%; /* Åtgärder column */
+    min-width: 120px; /* Ensure enough space for buttons */
+    text-align: right; /* Align Åtgärder buttons to the right */
+}
+
+/* Ensure Åtgärder buttons stay aligned to the right */
+#exerciseTable td:nth-child(4) .d-flex {
+    justify-content: flex-end; /* Align buttons to the right edge */
+    flex-wrap: nowrap;
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+    .navbar-brand .fas {
+        font-size: 1.2rem;
+    }
+    .card-body .fas {
+        font-size: 2.0rem;
+    }
+    .card-body .btn-sm .fas {
+        font-size: 1.0rem;
+    }
+
+    .navbar form[role="search"] input {
+        min-width: 100px; /* Adjust for mobile */
+    }
+
+    #exerciseTable th,
+    #exerciseTable td {
+        padding: 0.5rem; /* Reduce padding on smaller screens */
+    }
+
+    #exerciseTable th:nth-child(1),
+    #exerciseTable td:nth-child(1) {
+        width: auto;
+        max-width: 40%; /* Slightly reduce Övningsnamn max-width on mobile */
+        white-space: normal; /* Allow text to wrap on mobile */
+        word-wrap: break-word; /* Ensure long words break */
+        hyphens: auto;
+    }
+
+    #exerciseTable th:nth-child(2),
+    #exerciseTable td:nth-child(2) {
+        width: 25%; /* Utrustning column width */
+    }
+
+    #exerciseTable th:nth-child(3),
+    #exerciseTable td:nth-child(3) {
+        width: 25%; /* Primär muskel column width */
+    }
+
+    #exerciseTable th:nth-child(4),
+    #exerciseTable td:nth-child(4) {
+        width: 10%; /* Åtgärder column width */
+        min-width: 100px;
+    }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <div class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="#{login.title}">Logga in</h1>
+        <div th:if="${param.error}" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <span th:text="#{login.error}">Fel användarnamn eller lösenord. Försök igen.</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" th:attr="aria-label=#{general.close}"></button>
+        </div>
+        <div th:if="${param.logout}" class="alert alert-success alert-dismissible fade show" role="alert">
+            <span th:text="#{login.logout}">Du har loggats ut.</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" th:attr="aria-label=#{general.close}"></button>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form th:action="@{/login}" method="post">
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                    <div class="mb-3">
+                        <label for="username" class="form-label" th:text="#{login.username}">Användarnamn</label>
+                        <input type="text" class="form-control" id="username" name="username" required aria-required="true"/>
+                        <div class="invalid-feedback" th:text="#{login.username.required}">Användarnamn krävs.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label" th:text="#{login.password}">Lösenord</label>
+                        <input type="password" class="form-control" id="password" name="password" required aria-required="true"/>
+                        <div class="invalid-feedback" th:text="#{login.password.required}">Lösenord krävs.</div>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a th:href="@{/register}" class="btn btn-secondary me-2" role="button" th:attr="aria-label=#{login.register},data-bs-toggle='tooltip',data-bs-title=#{login.register}" th:text="#{login.register}">Registrera</a>
+                        <button type="submit" class="btn btn-primary" role="button" th:attr="aria-label=#{login.submit},data-bs-toggle='tooltip',data-bs-title=#{login.submit}" th:text="#{login.submit}">Logga in</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+</html>

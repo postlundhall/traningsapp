@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <section class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="#{ovning.error.title}">Fel med övning</h1>
+
+        <div class="alert alert-danger" role="alert" aria-live="polite" aria-labelledby="error-heading">
+            <h2 id="error-heading" class="alert-heading h4" th:text="#{ovning.error.heading}">Ett problem uppstod</h2>
+            <p class="mb-0" th:text="${errorMessage} ? (${entityId} != null ? #{${errorMessage}(${entityId})} : #{${errorMessage}.generic}) : #{ovning.error.unexpected}">Ett oväntat fel uppstod vid hantering av övningen.</p>
+            <p th:text="#{ovning.error.suggestion}">Försök igen eller kontakta support om problemet kvarstår.</p>
+        </div>
+
+        <nav th:attr="aria-label=#{error.actions}" class="mt-4">
+            <div class="d-flex flex-wrap gap-2">
+                <a th:href="@{/ovningar}"
+                   class="btn btn-primary"
+                   th:attr="aria-label=#{ovning.list.title},data-bs-toggle='tooltip',data-bs-title=#{ovning.list.title}">
+                    <i class="fas fa-arrow-left me-2" aria-hidden="true"></i>
+                    <span th:text="#{ovning.list.title}">Övningar</span>
+                </a>
+                <a th:href="@{/ovningar/new}"
+                   class="btn btn-success"
+                   th:attr="aria-label=#{ovning.form.title.new},data-bs-toggle='tooltip',data-bs-title=#{ovning.form.title.new}">
+                    <i class="fas fa-plus me-2" aria-hidden="true"></i>
+                    <span th:text="#{ovning.form.title.new}">Ny övning</span>
+                </a>
+                <a th:href="@{/}"
+                   class="btn btn-secondary"
+                   th:attr="aria-label=#{general.home},data-bs-toggle='tooltip',data-bs-title=#{general.home}">
+                    <i class="fas fa-home me-2" aria-hidden="true"></i>
+                    <span th:text="#{general.home}">Startsida</span>
+                </a>
+            </div>
+        </nav>
+    </section>
+</main>
+</html>

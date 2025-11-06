@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{layout/base :: layout(~{::main})}">
+<head>
+    <title>Träningspass Detaljer</title>
+</head>
+<body>
+<main>
+    <h1 th:text="${traningspass.passnamn}"></h1>
+    <p><strong>Syfte:</strong> <span th:text="${traningspass.syfte}"></span></p>
+    <p><strong>Nivå:</strong> <span th:text="${traningspass.niva}"></span></p>
+    <p><strong>Längd:</strong> <span th:text="${traningspass.langdMins} + ' minuter'"></span></p>
+
+    <h2>Övningar och Instruktioner</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Övningsnamn</th>
+            <th>Utrustning</th>
+            <th>Primär muskel</th>
+            <th>Antal set</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="instruktion : ${traningspass.instruktioner}">
+            <td th:text="${instruktion.ovning.ovningsnamn}"></td>
+            <td th:text="${instruktion.ovning.utrustning}"></td>
+            <td th:text="${instruktion.ovning.primarMuskel}"></td>
+            <td th:text="${instruktion.antalSet}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/traningspass/list}">Tillbaka till listan</a>
+</main>
+</body>
+</html>

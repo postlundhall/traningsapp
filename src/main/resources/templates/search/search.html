@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sv" th:replace="~{layout/base :: base(~{::main})}">
+<main>
+    <section class="container">
+        <h1 class="mb-4 display-5 fw-bold" th:text="#{navbar.search.submit}">Search</h1>
+        <div class="card">
+            <div class="card-body">
+                <p th:if="${query != null}" th:text="#{search.query(${query})}">Search results for: {0}</p>
+                <p th:if="${query == null}" th:text="#{search.noquery}">Enter a search query above.</p>
+                <p th:text="#{search.content}">Search functionality coming soon...</p>
+            </div>
+        </div>
+        <a th:href="@{/}" class="btn btn-primary mt-3" th:text="#{error.back}">Back to Home</a>
+    </section>
+</main>
+</html>
